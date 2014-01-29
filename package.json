@@ -1,11 +1,12 @@
 {
   "name": "sweet-exec",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Syntax extension for shell command execution without boilerplate",
   "main": "index.sjs",
   "dependencies": {},
   "devDependencies": {
-    "sweet.js": "~0.4.1"
+    "sweet.js": "~0.4.1",
+    "semver": "~2.2.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0"
