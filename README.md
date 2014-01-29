@@ -1,6 +1,7 @@
 # sweet-exec
 
-Syntax for executing shell commands using `child_process.exec(...)` function:
+Syntax extension (made with [Sweet.js][sjs]) for executing shell commands using
+`child_process.exec(...)` function:
 
     var dir = './';
 
@@ -15,3 +16,5 @@ Syntax for executing shell commands using `child_process.exec(...)` function:
 and synchronously via `execSync` npm module:
 
     var result = execSync `ls -lh {dir}`
+
+[sjs]: http://sweetjs.org
