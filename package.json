@@ -1,6 +1,6 @@
 {
   "name": "sweet-exec",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Syntax extension for shell command execution without boilerplate",
   "main": "index.sjs",
   "dependencies": {},
