@@ -1,0 +1,28 @@
+{
+  "name": "sweet-exec",
+  "version": "0.0.0",
+  "description": "Syntax extension for shell command execution without boilerplate",
+  "main": "index.sjs",
+  "dependencies": {},
+  "devDependencies": {
+    "sweet.js": "~0.4.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/andreypopp/sweet-exec.git"
+  },
+  "keywords": [
+    "sweet-macros",
+    "exec",
+    "execSync"
+  ],
+  "author": "Andrey Popp <8mayday@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andreypopp/sweet-exec/issues"
+  },
+  "homepage": "https://github.com/andreypopp/sweet-exec"
+}

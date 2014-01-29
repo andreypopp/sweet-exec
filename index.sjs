@@ -1,5 +1,6 @@
 macro interpolate {
   case { _ $template:expr } => {
+
     var ctx = #{$template}[0].context;
 
     function _copyCtx(tokens, ctx) {
@@ -78,14 +79,14 @@ macro interpolate {
     }
 
     var template = #{$template}[0].token.value.raw;
-
     var parts = annotateParts(splitParts(template));
     var mapping = buildMapping(parts);
-    var src = joinParts(parts);
 
-    src = src.replace(/__sweet_exec_id__[0-9]+/g, function(id) {
-      return mapping[id]
-    })
+    var src = joinParts(parts).replace(
+      /__sweet_exec_id__[0-9]+/g,
+      function(id) {
+        return mapping[id]
+      });
 
     return read(src);
   }
@@ -94,24 +95,27 @@ macro interpolate {
 let exec = macro {
   case { _ $cmd:expr { $body ... } } => {
 
+    // inject identifiers into callback's scope
     letstx $err = [makeIdent('err', #{$body ...}[0])];
     letstx $stdout = [makeIdent('stdout', #{$body ...}[0])];
     letstx $stderr = [makeIdent('stderr', #{$body ...}[0])];
 
     return #{
-      require('child_process').exec(interpolate $cmd , function($err, $stdout, $stderr) {
-        $body ...
-      });
+      require('child_process').exec(
+        interpolate $cmd ,
+        function($err, $stdout, $stderr) {
+          $body ...
+        });
     };
   }
   case { _ } => { return #{exec} }
 }
 
 let execSync = macro {
-  case { _ $cmd:expr } => {
-    return #{ require('execSync').exec(interpolate $cmd) };
+  rule { $cmd:expr } => {
+    require('execSync').exec(interpolate $cmd)
   }
-  case { _ } => { return #{execSync} }
+  rule { } => { }
 }
 
 export exec;
